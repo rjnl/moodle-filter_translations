@@ -16,7 +16,7 @@
 /**
  * Simple wrapper to call into the Diff2Html lib.
  *
- * @package filter_translations
+ * @module filter_translations/diffrenderer
  * @author Andrew Hancox <andrewdchancox@googlemail.com>
  * @author Open Source Learning <enquiries@opensourcelearning.co.uk>
  * @link https://opensourcelearning.co.uk
@@ -33,6 +33,7 @@ define(['Diff2Html'
         /**
          * Factory method returning instance of the formenhancements
          *
+         * @param {string} diffString The string containing the diff to render.
          * @return {formenhancements}
          */
         init: function(diffString) {

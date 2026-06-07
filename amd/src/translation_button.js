@@ -14,7 +14,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * @package filter_translations
+ * @module filter_translations/translation_button
  * @author Andrew Hancox <andrewdchancox@googlemail.com>
  * @author Open Source Learning <enquiries@opensourcelearning.co.uk>
  * @link https://opensourcelearning.co.uk
@@ -28,8 +28,9 @@ define(
         'core/modal',
         'core/str',
         'core/templates',
+        'core/notification'
     ],
-    function ($, Modal, Str, templates) {
+    function ($, Modal, Str, templates, Notification) {
     var translation_button = {
         'returnurl': '',
         'init': function (returnurl) {
@@ -141,6 +142,11 @@ define(
             walk(ancestor);
             return elements;
 
+            /**
+             * Recursively walks the DOM to find elements that directly contain text.
+             *
+             * @param {Node} element The root node to search.
+             */
             function walk(element) {
                 var n = element.childNodes.length;
                 for (var i = 0; i < n; i++) {
