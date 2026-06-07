@@ -22,7 +22,14 @@
  * @copyright 2021, Andrew Hancox
  */
 
-define(['jquery', 'core/modal_factory', 'core/str', 'core/templates'], function ($, ModalFactory, Str, templates) {
+define(
+    [
+        'jquery',
+        'core/modal',
+        'core/str',
+        'core/templates',
+    ],
+    function ($, Modal, Str, templates) {
     var translation_button = {
         'returnurl': '',
         'init': function (returnurl) {
@@ -116,12 +123,11 @@ define(['jquery', 'core/modal_factory', 'core/str', 'core/templates'], function 
                 component: 'filter_translations'
             }]).then(function (langStrings) {
                 return templates.render('filter_translations/translationdetailsmodalbody', context).done(function (html) {
-                    ModalFactory.create({
+                    Modal.create({
                         title: langStrings[0],
                         body: html,
-                        type: ModalFactory.types.ALERT
-                    }).then(function (modal) {
-                        modal.show();
+                        show: true,
+                        removeOnClose: true,
                     });
                 });
             }).fail(Notification.exception);
